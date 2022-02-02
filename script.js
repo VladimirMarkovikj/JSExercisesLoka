@@ -4,7 +4,7 @@
 // let y = 5;
 // const solution = <insert your code here>;
 // console.log(solution) // => "The sum of 2 and 5 is 7"
-console.log("TASK 1:");
+console.log("TASK 1.1:");
 let x = 1;
 let y = 2;
 const solution = `The sum of ${x} and ${y} is ${x + y}`;
@@ -18,7 +18,7 @@ console.log("-----------------------------------------");
 // const fb = [];
 // ADD CODE HERE
 // should log: [1, 2, 'fizz', 4, 'buzz', 'fizz', 7, 8, 'fizz', 'buzz', 11, 'fizz', 13, 14, 'fizzbuzz', 16]
-console.log("TASK 2:");
+console.log("TASK 1.2:");
 const fb = [];
 for (let i = 1; i < 17; i++) {
   if (i % 3 === 0 && i % 5 === 0) {
@@ -45,7 +45,7 @@ console.log("-----------------------------------------");
 // };
 // let found = 0;
 // // ADD CODE HERE
-console.log("TASK: 3");
+console.log("TASK: 1.3");
 const checkObj = {
   oddNum: 1,
   evenNum: 2,
@@ -77,7 +77,7 @@ console.log("-----------------------------------------");
 // };
 // let total = 0;
 // ADD CODE HERE
-console.log("TASK 4:");
+console.log("TASK 1.4:");
 const sumMe = {
   hello: "there",
   you: 8,
@@ -102,7 +102,7 @@ console.log("-----------------------------------------");
 // Uncomment these to check your work!
 // console.log(typeof addTwo); // should log: 'function'
 // console.log(addTwo(10)); // should log: 12
-console.log("TASK 5:");
+console.log("TASK 1.5:");
 const addTwo = (num) => num + 2;
 
 console.log(typeof addTwo);
@@ -130,7 +130,7 @@ console.log("-----------------------------------------");
 // console.log(makePlans("Mary")) // should return: "Plans made with Mary this weekend'
 // friendsAvailable = false;
 // console.log(makePlans("James")) //should return: "Everyone is busy this weekend."
-console.log("TASK 6:");
+console.log("TASK 1.6:");
 let friendsAvailable = true;
 function makePlans(name) {
   return callFriend(friendsAvailable, name);
@@ -154,7 +154,7 @@ console.log("-----------------------------------------");
 // Uncomment these to check your work!
 //console.log(getTheSum([3, 6, 9])); // expected log 18
 //console.log(getTheSum([10, 11, 12])); // expected log 33
-console.log("TASK 7:");
+console.log("TASK 1.7:");
 const getTheSum = (arr) => {
   let mem = 0;
   for (let i = 0; i < arr.length; i++) {
@@ -176,7 +176,7 @@ console.log("-----------------------------------------");
 // console.log(disemvowel('CodeSmith')); // => 'CdSmth'
 // console.log(disemvowel('BANANA')); // => 'BNN'
 // console.log(disemvowel('hello world')); // => 'hll wrld'
-console.log("TASK 8:");
+console.log("TASK 1.8:");
 
 function disemvowel(string) {
   var regex = /a|A|e|E|i|I|o|O|u|U/gi;
@@ -198,7 +198,7 @@ console.log("-----------------------------------------");
 // Uncomment these to check your work!
 // console.log(arrayBuilder({'cats': 2, 'dogs': 1})); // => ['cats', 'cats', 'dogs']
 // console.log(arrayBuilder({})); // => []
-console.log("TASK 9:");
+console.log("TASK 1.9:");
 const arrayBuilder = (obj) => {
   const arrResult = [];
   for (const key in obj) {
@@ -220,7 +220,7 @@ console.log("-----------------------------------------");
 // }
 
 // CREATE YOUR CONSOLE.LOG BELOW
-console.log("TASK 10:");
+console.log("TASK 1.10:");
 function add20(num) {
   return num + 20;
 }
@@ -237,7 +237,7 @@ console.log("-----------------------------------------");
 // const supernatural = {'Sam': 'Winchester', 'Dean': 'Winchester', 'Waldo': 'unknown'}
 // console.log(findWaldo(DC)) // should log: 'Where's Waldo?'
 // console.log(findWaldo(supernatural)) // should log: 'unknown'
-console.log("TASK 11:");
+console.log("TASK 1.11:");
 const findWaldo = (obj) => (obj["Waldo"] ? obj["Waldo"] : `Where's Waldo?`);
 
 const DC = { Bruce: "Wayne", Harley: "Quinn" };
@@ -260,7 +260,7 @@ console.log("-----------------------------------------");
 // map([3,4,5], subtractTwo); //-> [1,2,3]
 // subtractTwo(10); //-> 8
 // subtractTwo(12); //-> 10
-console.log("TASK 12:")
+console.log("TASK 1.12:")
 
 const subtractTwo = (num) => num - 2;
 const map = (arrNum, callback) => {
@@ -274,4 +274,5 @@ const map = (arrNum, callback) => {
 console.log(map([3, 4, 5], subtractTwo)); //-> [1,2,3]
 console.log(subtractTwo(10)); //-> 8
 console.log(subtractTwo(12)); //-> 10
+console.log("-----------------------------------------");
 
