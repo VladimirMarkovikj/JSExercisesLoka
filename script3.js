@@ -94,12 +94,10 @@ console.log(getLengthRecursion(["Aaron", "Barbara", "Chris"]));
 // // console.log(flow(2, arrayOfFunctions)); // -> -7
 
 const flow = (number, arrOfFunc) => {
-  for (let i = 0; i < arrOfFunc.length; i++) {
-    if (arrOfFunc.length != 1) {
-      return flow(arrOfFunc[i](number), arrOfFunc.slice(1));
+    while (arrOfFunc.length != 1) {
+        return flow(arrOfFunc[0](number), arrOfFunc.slice(1));
     }
-    return arrOfFunc[i](number);
-  }
+    return arrOfFunc[0](number);
 };
 
 function multiplyBy2(num) {
