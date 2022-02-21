@@ -94,10 +94,10 @@ console.log(getLengthRecursion(["Aaron", "Barbara", "Chris"]));
 // // console.log(flow(2, arrayOfFunctions)); // -> -7
 
 const flow = (number, arrOfFunc) => {
-    while (arrOfFunc.length != 1) {
-        return flow(arrOfFunc[0](number), arrOfFunc.slice(1));
-    }
-    return arrOfFunc[0](number);
+  while (arrOfFunc.length != 1) {
+    return flow(arrOfFunc[0](number), arrOfFunc.slice(1));
+  }
+  return arrOfFunc[0](number);
 };
 
 function multiplyBy2(num) {
@@ -142,7 +142,7 @@ const personStore = {
   },
 };
 function personFromPersonStore(name, age) {
-  return Object.create({...personStore, name, age});
+  return Object.create({ ...personStore, name, age });
 }
 
 const sandra = personFromPersonStore("Sandra", 26);
@@ -150,3 +150,195 @@ console.log(sandra.name); // -> Logs 'Sandra'
 console.log(sandra.age); // -> Logs 26
 sandra.greet(); // -> Logs 'hello'
 
+// 6. Create a function personFromConstructor that takes as input a name and an age.
+// When called, the function will create person objects using the new keyword
+// instead of the Object.create method.
+
+// function PersonConstructor() {
+//   this.greet = function() {
+//     console.log('hello');
+//   }
+// }
+
+// function personFromConstructor(name, age) {
+// 	// add code here
+
+// }
+
+// const mike = personFromConstructor('Mike', 30);
+
+// // Uncomment these lines to check your work!
+// // console.log(mike.name); // -> Logs 'Mike'
+// // console.log(mike.age); // -> Logs 30
+// // mike.greet(); // -> Logs 'hello'
+
+function PersonConstructor() {
+  this.greet = function () {
+    console.log("hello");
+  };
+}
+
+function personFromConstructor(name, age) {
+  return { ...new PersonConstructor(), name, age };
+}
+
+const mike = personFromConstructor("Mike", 30);
+
+console.log(mike.name); // -> Logs 'Mike'
+console.log(mike.age); // -> Logs 30
+mike.greet(); // -> Logs 'hello'
+
+// 7. Create a class PersonClass. PersonClass should have a constructor that is passed
+//  an input of name and saves it to a property by the same name.
+// PersonClass should also have a method called greet that logs the string "hello".
+
+// class PersonClass {
+// 	constructor() {
+//     // add code here
+
+// 	}
+
+// 	// add code here
+
+// }
+
+// const george = new PersonClass('George');
+
+// // Uncomment this line to check your work!
+// // george.greet(); // -> Logs 'hello'
+
+class PersonClass {
+  constructor(name) {
+    this.name = name;
+  }
+  greet() {
+    console.log("hello");
+  }
+}
+
+const george = new PersonClass("George");
+george.greet(); // -> Logs 'hello'
+
+// 8. Write a function once that accepts a callback as input and returns a function.
+// When the returned function is called the first time, it should call the callback and return that output.
+// If it is called any additional times, instead of calling the callback again
+//  it will simply return the output value from the first time it was called.
+// ADD CODE HERE
+
+// const addByTwoOnce = once(function(num) {
+//   return num + 2;
+// });
+
+// UNCOMMENT THESE TO TEST YOUR WORK!
+// console.log(addByTwoOnce(5));  //should log 7
+// console.log(addByTwoOnce(10));  //should log 7
+// console.log(addByTwoOnce(9001));  //should log 7
+
+const once = (callback) => {
+  let count = 0;
+  let result;
+  return (input) => {
+    if (count === 0) {
+      result = callback(input);
+      count++;
+    }
+    return result;
+  };
+};
+
+const addByTwoOnce = once(function (num) {
+  return num + 2;
+});
+
+console.log(addByTwoOnce(5)); //should log 7
+console.log(addByTwoOnce(10)); //should log 7
+console.log(addByTwoOnce(9001)); //should log 7
+
+// 9. Write a function after that takes the number of times the callback needs to be called
+//  before being executed as the first parameter and the callback as the second parameter.
+// ADD CODE HERE
+
+// const called = function(string) { return('hello ' + string); };
+// const afterCalled = after(3, called);
+
+// UNCOMMENT THESE LINES TO TEST YOUR WORK
+// console.log(afterCalled('world')); // -> undefined is printed
+// console.log(afterCalled('world')); // -> undefined is printed
+// console.log(afterCalled('world')); // -> 'hello world' is printed
+
+const after = (numTimes, callback) => {
+  let count = 1;
+  return (input) => {
+    if (count === numTimes) {
+      return callback(input);
+    }
+    count++;
+    return;
+  };
+};
+
+const called = function (string) {
+  return "hello " + string;
+};
+const afterCalled = after(3, called);
+
+console.log(afterCalled("world")); // -> undefined is printed
+console.log(afterCalled("world")); // -> undefined is printed
+console.log(afterCalled("world")); // -> 'hello world' is printed
+
+// 10. Create a function dateStamp that accepts a function and returns a function.
+// The returned function will accept whatever arguments the passed-in function accepts
+// and return an object with a date key whose value is today's date
+// (not including the time) represented as a human-readable string
+// (see the Date object for conversion methods),
+// and an output key that contains the result from invoking the passed-in function.
+// ADD CODE HERE
+
+// Uncomment these to check your work!
+// const stampedMultBy2 = dateStamp(n => n * 2);
+// console.log(stampedMultBy2(4)); // should log: { date: (today's date), output: 8 }
+// console.log(stampedMultBy2(6)); // should log: { date: (today's date), output: 12 }
+
+const dateStamp = (callback) => {
+  return (input) => ({
+    date: new Date().toDateString(),
+    output: callback(input),
+  });
+};
+
+const stampedMultBy2 = dateStamp((n) => n * 2);
+console.log(stampedMultBy2(4)); // should log: { date: (today's date), output: 8 }
+console.log(stampedMultBy2(6)); // should log: { date: (today's date), output: 12 }
+
+// 11. Create a function censor that accepts no arguments.
+//  censor will return a function that will accept either two strings, or one string.
+//  When two strings are given, the returned function will hold onto the two strings as a pair,
+//  for future use. When one string is given, the returned function will return the same string,
+//  except all instances of a first string (of a saved pair) will be replaced with the second string
+//  (of a saved pair).
+// ADD CODE HERE
+
+// Uncomment these to check your work!
+// const changeScene = censor();
+// changeScene('dogs', 'cats');
+// changeScene('quick', 'slow');
+// console.log(changeScene('The quick, brown fox jumps over the lazy dogs.')); // should log: 'The slow, brown fox jumps over the lazy cats.'
+
+const censor = () => {
+  let arrayOfPairStrings = [];
+  return (string1, string2) => {
+    if (string2) {
+      arrayOfPairStrings.push([string1, string2]);
+    } else {
+      for (let i = 0; i < arrayOfPairStrings.length; i++) {
+        const [firstString, secondString] = arrayOfPairStrings[i];
+        string1 = string1.replace(firstString, secondString);
+      }
+      return string1;
+    }
+  };
+};
+const changeScene = censor();
+changeScene("dogs", "cats");
+changeScene("quick", "slow");
+console.log(changeScene("The quick, brown fox jumps over the lazy dogs.")); // should log: 'The slow, brown fox jumps over the lazy cats.'
